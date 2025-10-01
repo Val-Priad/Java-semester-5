@@ -1,3 +1,4 @@
+
 package org.example;
 
 import java.io.IOException;
@@ -6,23 +7,67 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        try {
-            String userInput = getUserInput();
-            char keyChar = getKeyChar();
-            String fileName = getFileName();
+        while (true) {
+            try {
+                int mode = getMode();
 
-            Cryption.encryption(userInput, keyChar, fileName);
+                if (mode == 0) {
+                    System.out.println("Exiting the program...");
+                    break;
+                }
 
-            String encrypted = Cryption.readEncryptedStringFromFile(fileName);
+                char keyChar = getKeyChar();
+                String fileName = getFileName();
 
-            String decrypted = Cryption.decryption(keyChar, fileName);
+                switch (mode) {
+                    case 1:
+                        String userInput = getUserInput();
+                        Cryption.encryption(userInput, keyChar, fileName);
+                        System.out.println(
+                                "String successfully encrypted and saved to file.");
+                        break;
 
-            System.out.println("Original String: " + userInput);
-            System.out.println("Encrypted String: " + encrypted);
-            System.out.println("Decrypted String: " + decrypted);
-        } catch (IOException | IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
+                    case 2:
+                        String encrypted =
+                                Cryption.readEncryptedStringFromFile(fileName);
+                        String decrypted =
+                                Cryption.decryption(keyChar, fileName);
+                        System.out.println(
+                                "Encrypted String from file: " + encrypted);
+                        System.out.println("Decrypted String: " + decrypted);
+                        break;
+
+                    case 3:
+                        String text = getUserInput();
+                        Cryption.encryption(text, keyChar, fileName);
+                        String enc =
+                                Cryption.readEncryptedStringFromFile(fileName);
+                        String dec = Cryption.decryption(keyChar, fileName);
+                        System.out.println("Original String: " + text);
+                        System.out.println("Encrypted String: " + enc);
+                        System.out.println("Decrypted String: " + dec);
+                        break;
+
+                    default:
+                        System.out.println("Invalid mode selected!");
+                }
+
+            } catch (IOException | IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+            System.out.println();
         }
+    }
+
+    public static int getMode() {
+        System.out.println("Choose mode:");
+        System.out.println("1 - Encrypt text to file");
+        System.out.println("2 - Decrypt text from file");
+        System.out.println("3 - Encrypt and then Decrypt");
+        System.out.println("0 - Exit");
+        Scanner input = new Scanner(System.in);
+        return input.nextInt();
     }
 
     public static String getUserInput() {
@@ -57,5 +102,4 @@ public class Main {
         }
         return fileName;
     }
-
 }
