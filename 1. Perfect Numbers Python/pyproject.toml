@@ -1,0 +1,10 @@
+[project]
+name = "1-perfect-numbers"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "debugpy>=1.8.16",
+    "pytest>=8.4.2",
+]

@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "lehmer",
+        "merssene"
+    ],
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python-envs.pythonProjects": []
+}
