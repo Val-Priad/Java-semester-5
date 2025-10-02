@@ -18,6 +18,7 @@
 - [10.1. Working with Reflection](./10.1.%20Working%20with%20Reflection)
 - [10.2. Logging → linked to 5.3](./05.3.%20Encryption%20and%20Decryption)
 - [10.3. Internationalization → linked to 5.2](./05.2.%20MVC%20Java%20IO)
+- [11. Databases](<./11. Databases/>)
 
 ## 📑 Tasks
 
